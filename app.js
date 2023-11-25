@@ -15,6 +15,7 @@ const validateMsisdn = async (msisdn) => {
 };
 
 app.post("/api/phoneNumber", async (req, res) => {
+  console.log(req.body);
   const msisdn = req.body.msisdn;
   const message = req.body.message;
   const shortcode = req.body.shortcode;
