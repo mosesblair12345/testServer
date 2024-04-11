@@ -27,8 +27,15 @@ app.post("/api/phoneNumber", async (req, res) => {
   const offer_code = req.body.offer_code;
   const requestId = req.body.requestId;
   const customer_id = req.body.customer_id;
-  console.log(req.body.Result.ReferenceData);
 
+  if (
+    req.body.Result.ResultParameters &&
+    req.body.Result.ResultParameters.ResultParameter instanceof Array
+  ) {
+    const resultParameterArray =
+      req.body.Result.ResultParameters.ResultParameter;
+    console.log(resultParameterArray); // Logging ResultParameter array
+  }
   try {
     await validateMsisdn(msisdn);
     setTimeout(() => {
